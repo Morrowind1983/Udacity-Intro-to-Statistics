@@ -19,7 +19,8 @@ from email_preprocess import preprocess
 ### labels_train and labels_test are the corresponding item labels
 features_train, features_test, labels_train, labels_test = preprocess()
 
-
+features_train = features_train[:len(features_train)/100]
+labels_train = labels_train[:len(labels_train)/100]
 
 
 #########################################################
@@ -27,23 +28,18 @@ features_train, features_test, labels_train, labels_test = preprocess()
 from sklearn import svm
 from sklearn.metrics import accuracy_score
 
-clf = svm.SVC(kernel='linear')
+clf = svm.SVC(C=10000.0, kernel='rbf')
 
 t0 = time()
 clf.fit(features_train, labels_train)
 print "training time:", round(time()-t0, 3), "s"
 
-t1 = time()
-pred = clf.predict(features_test)
-print "predict time:", round(time()-t1, 3), "s"
-
-score = accuracy_score(labels_test, pred)
-print "accuracy score:", score
+pred = clf.predict([features_test[10], features_test[26], features_test[50]])
+print "predict of features_test[10,26,50]:", pred
 
 #########################################################
 
 # no. of Chris training emails: 7936
 # no. of Sara training emails: 7884
-# training time: 225.48 s
-# predict time: 23.718 s
-# accuracy score: 0.984072810011
+# training time: 0.114 s
+# predict of features_test[10,26,50]: [1 0 1]

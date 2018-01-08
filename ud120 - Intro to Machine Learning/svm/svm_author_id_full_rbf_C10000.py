@@ -27,7 +27,7 @@ features_train, features_test, labels_train, labels_test = preprocess()
 from sklearn import svm
 from sklearn.metrics import accuracy_score
 
-clf = svm.SVC(kernel='linear')
+clf = svm.SVC(C=10000.0, kernel='rbf')
 
 t0 = time()
 clf.fit(features_train, labels_train)
@@ -40,10 +40,15 @@ print "predict time:", round(time()-t1, 3), "s"
 score = accuracy_score(labels_test, pred)
 print "accuracy score:", score
 
+print "There are", len(pred), "test events"
+print list(pred).count(1), "are predicted to be in the \"Chris\" (1) class"
+
 #########################################################
 
 # no. of Chris training emails: 7936
 # no. of Sara training emails: 7884
-# training time: 225.48 s
-# predict time: 23.718 s
-# accuracy score: 0.984072810011
+# training time: 116.334 s
+# predict time: 11.827 s
+# accuracy score: 0.990898748578
+# There are 1758 test events
+# 877 are predicted to be in the "Chris" (1) class

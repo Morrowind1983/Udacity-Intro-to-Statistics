@@ -44,4 +44,8 @@ print "accuracy score:", score
 
 #########################################################
 
-
+# no. of Chris training emails: 7936
+# no. of Sara training emails: 7884
+# training time: 1.848 s
+# predict time: 0.203 s
+# accuracy score: 0.973265073948
