@@ -102,3 +102,5 @@ ENV/
 
 # MacOS
 .DS_Store
+maildir
+enron_mail_20150507.tar.gz
