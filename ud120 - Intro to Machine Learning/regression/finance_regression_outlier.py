@@ -67,6 +67,10 @@ plt.scatter(feature_test[0], target_test[0], color=train_color, label="train")
 ### draw the regression line, once it's coded
 try:
     plt.plot( feature_test, reg.predict(feature_test) )
+    reg.fit(feature_test, target_test)
+    print "new slope:", reg.coef_[0]
+    print "new intercept:", reg.intercept_
+    plt.plot(feature_train, reg.predict(feature_train), color="b")
 except NameError:
     pass
 plt.xlabel(features_list[1])
@@ -78,3 +82,5 @@ plt.show()
 # intercept: -102360.543294
 # training score: 0.0455091926995
 # test score: -1.48499241737
+# new slope: 2.27410114127
+# new intercept: 124444.388866

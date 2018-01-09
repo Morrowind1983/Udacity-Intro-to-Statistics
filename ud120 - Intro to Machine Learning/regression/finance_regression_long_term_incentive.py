@@ -21,7 +21,7 @@ dictionary = pickle.load( open("../final_project/final_project_dataset_modified.
 
 ### list the features you want to look at--first item in the 
 ### list will be the "target" feature
-features_list = ["bonus", "salary"]
+features_list = ["bonus", "long_term_incentive"]
 data = featureFormat( dictionary, features_list, remove_any_zeroes=True)
 target, features = targetFeatureSplit( data )
 
@@ -74,7 +74,7 @@ plt.ylabel(features_list[0])
 plt.legend()
 plt.show()
 
-# slope: 5.44814028881
-# intercept: -102360.543294
-# training score: 0.0455091926995
-# test score: -1.48499241737
+# slope: 1.19214698985
+# intercept: 554478.756215
+# training score: 0.217085971258
+# test score: -0.59271289995
