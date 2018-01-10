@@ -14,7 +14,9 @@ def outlierCleaner(predictions, ages, net_worths):
     cleaned_data = []
 
     ### your code goes here
-
+    for age, net_worth, pred in zip(ages, net_worths, predictions):
+        cleaned_data.append((age, net_worth, (pred - net_worth)**2))
+    cleaned_data.sort(key=lambda x:x[2])
     
-    return cleaned_data
+    return cleaned_data[:len(cleaned_data)*9/10]
 
