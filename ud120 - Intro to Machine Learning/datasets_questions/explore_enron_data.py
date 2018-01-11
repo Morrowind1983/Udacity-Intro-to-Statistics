@@ -38,3 +38,5 @@ total_payments_nan = len([1 for value in enron_data.values() if value['total_pay
 print round(100.0*total_payments_nan/len(enron_data)), "% of people in the dataset have 'NaN' for their total payments"
 total_payments_nan_poi = len([1 for value in enron_data.values() if value['poi'] and value['total_payments'] == "NaN"])
 print round(100.0*total_payments_nan_poi/len(enron_data)), "% of POIs in the dataset have 'NaN' for their total payments"
+
+print "Jeff Skilling:", enron_data["SKILLING JEFFREY K"]

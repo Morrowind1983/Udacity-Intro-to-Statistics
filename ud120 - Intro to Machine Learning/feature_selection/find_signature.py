@@ -38,6 +38,37 @@ labels_train   = labels_train[:150]
 
 
 ### your code goes here
+from sklearn import tree
+from sklearn.metrics import accuracy_score
 
+print "samples:", len(features_train)
+print "features:", len(features_train[0])
 
+clf = tree.DecisionTreeClassifier()
+clf.fit(features_train, labels_train)
+pred = clf.predict(features_test)
+score = accuracy_score(labels_test, pred)
+print "accuracy score:", score
 
+importances = [(idx, x) for idx, x in enumerate(clf.feature_importances_) if x > 0.1]
+print "feature importances:", importances
+importances_list = list(clf.feature_importances_)
+print vectorizer.get_feature_names()[importances_list.index(max(importances_list))]
+
+# samples: 150
+# features: 37863
+# accuracy score: 0.947667804323
+# feature importances: [(33201, 0.13402829486224865), (33614, 0.7647058823529412)]
+# sshacklensf
+
+# samples: 150
+# features: 37862
+# accuracy score: 0.950511945392
+# feature importances: [(8674, 0.16260162601626021), (14343, 0.6666666666666667)]
+# cgermannsf
+
+# samples: 150
+# features: 37861
+# accuracy score: 0.816837315131
+# feature importances: [(11975, 0.10537857900318125), (18849, 0.1869272434489826), (21323, 0.36363636363636365)]
+# houectect
