@@ -75,6 +75,8 @@ print "done in %0.3fs" % (time() - t0)
 
 eigenfaces = pca.components_.reshape((n_components, h, w))
 
+print "pca explained variance:", pca.explained_variance_[:5]
+
 print "Projecting the input data on the eigenfaces orthonormal basis"
 t0 = time()
 X_train_pca = pca.transform(X_train)
