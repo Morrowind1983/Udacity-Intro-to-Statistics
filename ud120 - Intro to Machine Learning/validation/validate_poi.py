@@ -26,7 +26,20 @@ data = featureFormat(data_dict, features_list)
 labels, features = targetFeatureSplit(data)
 
 
-
 ### it's all yours from here forward!  
+from sklearn.cross_validation import train_test_split
+from sklearn.metrics import accuracy_score
+from sklearn.tree import DecisionTreeClassifier
 
+clf = DecisionTreeClassifier()
+clf.fit(features, labels)
+pred = clf.predict(features)
+score = accuracy_score(labels, pred)
+print "accuracy score(overfit):", score
 
+features_train, features_test, labels_train, labels_test = train_test_split(features, labels, test_size=0.3, random_state=42)
+
+clf.fit(features_train, labels_train)
+pred = clf.predict(features_test)
+score = accuracy_score(labels_test, pred)
+print "accuracy score:", score
